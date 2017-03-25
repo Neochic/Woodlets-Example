@@ -1,0 +1,38 @@
+/*!
+Theme Name: woodlets-example
+Version: 1.0
+*/
+
+@import (once) "styles/_config";
+@import (once) "styles/_fonts";
+@import (once) "styles/_layout";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: @textColor;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+a {
+  color: @accentColor;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+}

@@ -1,0 +1,31 @@
+apache:
+  image: wordpress:php7.1
+  restart: always
+  ports:
+    - ${WOODLETS_EXPOSE_PORT}:80
+  volumes:
+    - ./public:/var/www/html/
+    - ./src/:/var/www/html/wp-content/themes/${WOODLETS_NAME}
+  links:
+    - mysql
+  environment:
+    - WORDPRESS_DB_HOST=mysql
+    - WORDPRESS_DB_USER=admin
+    - WORDPRESS_DB_PASSWORD=admin
+    - WORDPRESS_DB_NAME=wordpress
+  command: |
+      bash -c "
+      chown -R www-data: /var/www/html &&
+      chmod -R g+w /var/www/html &&
+      apache2-foreground
+      "
+mysql:
+  image: mysql
+  restart: always
+  volumes:
+    - ./var/mysql:/var/lib/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_USER=admin
+    - MYSQL_PASSWORD=admin
+    - MYSQL_DATABASE=wordpress

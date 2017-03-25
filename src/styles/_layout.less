@@ -1,0 +1,38 @@
+@import '_config';
+
+.header {
+  padding-top:85px;
+
+  .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    display: flex;
+
+    .admin-bar & {
+      top: 32px;
+    }
+  }
+
+  .header-logo {
+    display: block;
+    width: 178px;
+    margin-top: 18px;
+    padding-left: 40px;
+  }
+
+  .header-menu {
+    flex: 1;
+    padding: 35px 40px;
+    font-size: 16px;
+    line-height: 15px;
+    text-align: right;
+    text-transform: uppercase;
+
+    a {
+      color: @textColor;
+    }
+  }
+}
