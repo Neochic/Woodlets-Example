@@ -1,1 +1,19 @@
-{% extends '@woodlets/defaultTemplates/pages/default.twig' %}
+{% extends 'shared/base-layout.twig' %}
+
+{% block form %}
+    {{
+        woodlets.addCol('main', 'mainColumn'|trans('woodlets-example'), {
+            'allowed': [
+                'centered-text'
+            ]
+        })
+    }}
+{% endblock %}
+
+{% block view %}
+    {{ woodlets.getCol('main') }}
+{% endblock %}
+
+{% block content %}
+    {{ block('view') }}
+{% endblock %}

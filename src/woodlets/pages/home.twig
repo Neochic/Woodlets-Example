@@ -1,0 +1,35 @@
+{% extends 'pages/default.twig' %}
+
+{% block form %}
+    {{ parent() }}
+    {{
+        woodlets
+            .section("Header"|trans('woodlets-example'))
+            .add('media', 'homeTeaserImage', {
+                'label': 'image'|trans('woodlets-example'),
+                'type': 'image'
+            })
+    }}
+{% endblock %}
+
+{% block titleAndBreadCrumb %}{% endblock %}
+
+{% block innerHeader %}
+    {{ parent() }}
+    {% set pageConfig = woodlets.getPageConfig() %}
+    {% set background = getBackgroundUrls(pageConfig.homeTeaserImage, 'full-width') %}
+    <div class="header-home"
+         {% if pageConfig.homeTeaserImage %}
+         style="background-image:url({{ background.image }})"
+         data-rbi="{{ background.variants|json_encode }}"
+        {% endif %}>
+        <div>
+            <h1 class="headline-sc">{{ woodlets.bloginfo( 'name' ) }}</h1>
+            {% set description = woodlets.get_bloginfo( 'description', 'display' ) %}
+            {% if description or woodlets.is_customize_preview() %}
+                <strong>{{ description }}</strong>
+            {% endif %}
+            <span class="headline-font">Weiterlesen</span>
+        </div>
+    </div>
+{% endblock %}

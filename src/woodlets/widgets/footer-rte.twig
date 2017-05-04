@@ -1,0 +1,24 @@
+{% block form %}
+    {{
+        woodlets
+            .setTitle('footerRTEWidget'|trans('woodlets-example'))
+            .setAlias('footer-rte')
+            .setDescription('footerRTEWidgetDescription'|trans('woodlets-example'))
+    }}
+    {{
+        woodlets
+            .add('text', 'headline', { 'label': 'headline'|trans('woodlets-example') })
+            .add('rte', 'body', { 'label': 'text'|trans('woodlets-example') })
+    }}
+{% endblock %}
+
+{% block preview %}
+    <h3>{{ headline }}</h3>
+    {{ body|raw }}
+{% endblock %}
+
+{% block view %}
+    {% if headline %}<h2>{{ headline }}</h2>{% endif %}
+    {{ body|raw }}
+{% endblock %}
+

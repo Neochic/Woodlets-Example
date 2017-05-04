@@ -1,0 +1,21 @@
+{% block form %}
+    {{
+        woodlets.add('checkbox', 'grey', { 'label': 'greyBackground'|trans('woodlets-example') })
+    }}
+{% endblock %}
+
+{% block sectionContent %}{% endblock %}
+
+{% block sectionWrap %}
+    <div class="section{% if sectionClasses %} {{ sectionClasses }}{% endif %}{% if grey %} grey{% endif %}"{% if sectionAttributes %} {{ sectionAttributes|raw }}{% endif %}>
+        {{ block('sectionContent') }}
+    </div>
+{% endblock %}
+
+{% block view %}
+    {#
+     # we need this extra block since {{ parent() }} doesn't seem
+     # to work for main block with renderBlock method in twig
+     #}
+    {{ block('sectionWrap') }}
+{% endblock %}

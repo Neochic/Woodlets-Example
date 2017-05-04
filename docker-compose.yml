@@ -6,6 +6,7 @@ apache:
   volumes:
     - ./public:/var/www/html/
     - ./src/:/var/www/html/wp-content/themes/${WOODLETS_NAME}
+    - /home/christoph/workspace/Woodlets:/var/www/html/wp-content/plugins/woodlets
   links:
     - mysql
   environment:
@@ -15,7 +16,7 @@ apache:
     - WORDPRESS_DB_NAME=wordpress
   command: |
       bash -c "
-      chown -R www-data: /var/www/html &&
+      chown -R www-data /var/www/html &&
       chmod -R g+w /var/www/html &&
       apache2-foreground
       "

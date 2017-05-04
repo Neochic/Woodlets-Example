@@ -1,0 +1,16 @@
+{% extends 'shared/base-layout.twig' %}
+
+{% block bodyClass %} blog-body{% endblock %}
+
+{% block innerBody %}
+    <div class="blog-content">
+        {{ parent() }}
+    </div>
+    <div class="blog-sidebar">
+        {% if woodlets.is_active_sidebar( 'sidebar-1' ) %}
+            <ul>
+                {{ woodlets.dynamic_sidebar( 'sidebar-1' ) and null }}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

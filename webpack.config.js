@@ -28,14 +28,23 @@ module.exports = {
         new ExtractTextPlugin("style.css"),
         new CopyWebpackPlugin([
             {
-                from: 'node_modules/font-awesome/fonts/**',
-                to: 'vendor-assets/font-awesome/',
-                flatten: true,
-                ignore: '*.otf'
+                from: 'node_modules/material-design-icons/iconfont/**',
+                to: 'vendor-assets/material-design-icons/iconfont/',
+                flatten: true
             },
             {
-                from: 'node_modules/typeface-ubuntu/files/**',
-                to: 'vendor-assets/typeface-ubuntu/files/',
+                from: 'node_modules/typeface-cormorant-garamond/files/**',
+                to: 'vendor-assets/typeface-cormorant-garamond/files/',
+                flatten: true
+            },
+            {
+                from: 'node_modules/typeface-cormorant-sc/files/**',
+                to: 'vendor-assets/typeface-cormorant-sc/files/',
+                flatten: true
+            },
+            {
+                from: 'node_modules/typeface-lato/files/**',
+                to: 'vendor-assets/typeface-lato/files/',
                 flatten: true
             }
         ])

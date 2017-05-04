@@ -1,0 +1,34 @@
+{% extends 'shared/section.twig' %}
+
+{% block form %}
+    {{
+        woodlets
+            .setTitle('centeredTextWidget'|trans('woodlets-example'))
+            .setAlias('centered-text')
+            .setDescription('centeredTextWidgetDescription'|trans('woodlets-example'))
+    }}
+    {{
+        woodlets
+            .add('text', 'headline', { 'label': 'headline'|trans('woodlets-example') })
+            .add('checkbox', 'mainHeadline', { 'label': 'mainHeadline'|trans('woodlets-example') })
+            .add('rte', 'body', { 'label': 'text'|trans('woodlets-example') })
+    }}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block preview %}
+    <h3>{{ headline }}</h3>
+    {{ body|raw }}
+{% endblock %}
+
+{% block sectionWrap %}
+    {% set sectionClasses = "narrow centered-text" %}
+    {{ parent() }}
+{% endblock %}
+
+{% block sectionContent %}
+    {% if headline %}<h2>{{ headline }}</h2>{% endif %}
+    {{ body|raw }}
+{% endblock %}
+

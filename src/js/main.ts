@@ -1,2 +1,5 @@
 import "../../public/wp-includes/js/wp-embed.min.js";
-import * as $ from 'jquery';
+import "@neochic/responsive-background-image";
+import "./header";
+import "./search";
+import "./mobile-nav";

@@ -1,31 +1,83 @@
 {% extends '@woodlets/defaultTemplates/layouts/alternative.twig' %}
 
+{% block head %}
+    {{ parent() }}
+    <script type="text/javascript">
+        !MutationObserver || document.write('<style type="text/css">[data-rbi]{background-image:none !important;}</style>');
+    </script>
+{% endblock %}
+
+{% block mobileNavTrigger %}
+    <span class="icon icon-menu">{{ "menu"|trans('woodlets-example') }}</span>
+{% endblock %}
+
+{% block mobileNav %}
+    <div class="mobile-nav">
+        <span class="icon icon-close">{{ "closeMenu"|trans('woodlets-example') }}</span>
+        {{
+            woodlets.wp_nav_menu({
+                'theme_location': 'header-menu',
+                'container': 'ul',
+                'menu_class': 'clean-list mobile-menu',
+                'depth': 1
+            })
+        }}
+    </div>
+{% endblock %}
+
 {% block layout %}
     {% set themeUrl = woodlets.get_stylesheet_directory_uri() %}
 
     <div class="header">
-        <div class="fixed">
-            <a class="header-logo" href="{{ woodlets.get_site_url() }}">
-                <img width="178"
-                     height="48"
-                     src="{{ themeUrl }}/img/logo.jpg"
-                     srcset="{{ themeUrl }}/img/logo.png 1x, {{ themeUrl }}/img/logo-2x.png 2x, {{ themeUrl }}/img/logo-3x.png 3x"
-                     alt="PraeMedicon"></a>
-
+        {% block innerHeader %}
+        <div class="fixed" data-mobile-nav="{% spaceless %}{{ block('mobileNav')|escape }}{% endspaceless %}" data-mobile-nav-trigger="{% spaceless %}{{ block('mobileNavTrigger')|escape }}{% endspaceless %}">
+            {% set logo =woodlets.get_theme_mod('woodlets-example-logo') %}
+            <a class="header-logo headline-sc" href="{{ woodlets.get_site_url() }}">
+                {% if logo %}
+                    {{ woodlets.wp_get_attachment_image(logo, 'logo')|raw }}
+                {% else %}
+                    {{ woodlets.get_theme_mod('woodlets-example-logo-text') }}
+                {% endif %}
+            </a>
             {% spaceless %}
                 {{
-                woodlets.wp_nav_menu({
-                    'theme_location': 'header-menu',
-                    'container': 'ul',
-                    'menu_class': 'clean-list header-menu',
-                    'depth': 1
-                })
+                    woodlets.wp_nav_menu({
+                        'theme_location': 'header-menu',
+                        'container': 'ul',
+                        'menu_class': 'clean-list header-menu',
+                        'depth': 1
+                    })
                 }}
             {% endspaceless %}
+            <div class="search-bar">
+                <span class="icon icon-search">{{ "search"|trans('woodlets-example') }}</span>
+                {% spaceless %}{{ woodlets.get_search_form() }}{% endspaceless %}
+            </div>
         </div>
+        {% endblock %}
     </div>
-    <div class="body">
-        {{ parent() }}
+    <div class="body{% block bodyClass %}{% endblock %}">
+        {% set layoutContent = parent() %}
+        {% block innerBody %}
+            {{ layoutContent|raw }}
+        {% endblock %}
+    </div>
+    <div class="footer section">
+        {% set footerElements = woodlets.get_theme_mod('woodlets-example-footer-elements') %}
+        {% if footerElements %}
+            <div class="footer-cols cols-{{ footerElements|length < 4 ? footerElements|length : 4 }}">
+                {{
+                    woodlets.contentArea(footerElements,
+                        {
+                            woodlets_before_widget: "<div>",
+                            woodlets_after_widget: "</div>"
+                        }
+                    )
+                }}
+            </div>
+        {% endif %}
+        {% set defaultCopyrightText ='Powered by <a href="https://wordpress.org/" target="_blank">WordPress</a>. Theme: <a href="https://github.com/Neochic/Woodlets-Example" target="_blank">Woodlets-Example</a> by <a href="https://www.neochic.de/" target="_blank">Neochic GmbH</a>' %}
+        © {{ woodlets.date('Y') }} &mdash; {{ woodlets.get_theme_mod('woodlets-example-copyright-text')|default(defaultCopyrightText)|raw }}
     </div>
 {% endblock %}
 

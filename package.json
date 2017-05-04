@@ -3,18 +3,21 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@neochic/responsive-background-image": "git+https://github.com/Neochic/responsive-background-image.git",
     "@types/jquery": "^2.0.41",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.27.3",
     "extract-text-webpack-plugin": "^2.1.0",
-    "font-awesome": "^4.7.0",
     "jquery": "^3.2.0",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "less-plugin-autoprefix": "^1.5.1",
     "less-plugin-clean-css": "^1.5.1",
+    "material-design-icons": "^3.0.1",
     "ts-loader": "^2.0.2",
-    "typeface-ubuntu": "0.0.22",
+    "typeface-cormorant-garamond": "0.0.22",
+    "typeface-cormorant-sc": "0.0.22",
+    "typeface-lato": "0.0.22",
     "typescript": "^2.2.1",
     "webpack": "^2.2.1"
   }

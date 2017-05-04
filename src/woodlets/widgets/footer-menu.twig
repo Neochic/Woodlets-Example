@@ -1,0 +1,39 @@
+{% block form %}
+    {{
+        woodlets
+            .setTitle('footerMenuWidget'|trans('woodlets-example'))
+            .setAlias('footer-menu')
+            .setDescription('footerMenuWidgetDescription'|trans('woodlets-example'))
+    }}
+    {{
+        woodlets
+            .add('text', 'headline', { 'label': 'headline'|trans('woodlets-example') })
+            .add('select', 'menu', {
+                'label': 'menu'|trans('woodlets-example'),
+                'options': navMenus()
+            })
+    }}
+{% endblock %}
+
+{% block preview %}
+    <h3>{{ headline }}</h3>
+    {% if menu %}
+        {% set menuItem = woodlets.get_term(menu) %}
+        {% if menuItem %}
+            {{ menuItem.name }}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block view %}
+    {% if headline %}<h2>{{ headline }}</h2>{% endif %}
+    {{
+        woodlets.wp_nav_menu({
+            'menu': menu,
+            'container': 'ul',
+            'menu_class': 'clean-list footer-menu',
+            'depth': 1
+        })
+    }}
+{% endblock %}
+
