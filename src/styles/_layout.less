@@ -42,12 +42,17 @@
       right: 0;
       bottom: 0;
       opacity: 0;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.2s ease, background-color 0.2s ease;
     }
 
-    &.not-top, &.show-search {
+    &.with-background, &.not-top, &.show-search {
       &:before {
         opacity: 1;
+      }
+    }
+    &.with-background:not(.not-top) {
+      &:before {
+        background-color: white;
       }
     }
   }
@@ -70,7 +75,7 @@
     transition: color 0.2s ease;
   }
 
-  .fixed.not-top, .fixed.show-search {
+  .fixed.with-background, .fixed.not-top, .fixed.show-search {
     .header-logo {
       color:@textColor;
     }
@@ -180,7 +185,7 @@
     }
   }
 
-  .fixed.not-top, .fixed.show-search {
+  .fixed.with-background, .fixed.not-top, .fixed.show-search {
     .icon-search, .icon-menu {
       color: @textColor;
     }
@@ -253,18 +258,20 @@
     }
   }
 
-  .not-top .header-menu, .show-search .header-menu {
-    a {
-      color: @textColor;
+  .with-background, .not-top, .show-search {
+    .header-menu{
+      a {
+        color: @textColor;
 
-      &:after {
-        background-color: @textColor;
+        &:after {
+          background-color: @textColor;
+        }
       }
-    }
 
-    .current-menu-item a {
-      &:after {
-        background-color: @accentColor;
+      .current-menu-item a {
+        &:after {
+          background-color: @accentColor;
+        }
       }
     }
   }
@@ -435,15 +442,21 @@ body.show-mobile-nav {
 
 
 .section {
-  padding: 80px ~"calc((100% - 1340px)/2)";
+  padding: 0 ~"calc((100% - 1340px)/2)";
+  margin: 100px 0;
 
   @media screen and (max-width: 1380px) {
     padding-left: 20px;
     padding-right: 20px;
   }
 
+  &.large-text {
+    font-size: 20px;
+    line-height: 1.7em;
+  }
+
   &.narrow {
-    padding: 80px ~"calc((100% - 720px)/2)";
+    padding: 0 ~"calc((100% - 720px)/2)";
 
     h1, h2 {
       margin-left: -130px;
@@ -473,6 +486,7 @@ body.show-mobile-nav {
     line-height: 1.5em;
     font-weight: 300;
     text-align: center;
+    margin-top: 0;
   }
 
   @media screen and (max-width: 1020px) {
@@ -498,9 +512,15 @@ body.show-mobile-nav {
   }
 }
 
+.body {
+  min-height: ~'calc(100vh - 350px)';
+}
+
 .footer {
   background-color: @colorBackgroundLight;
+  padding-top: 40px;
   padding-bottom: 40px;
+  margin-bottom: 0;
   font-size: 14px;
   line-height: 1.5em;
 
@@ -544,4 +564,16 @@ body.show-mobile-nav {
       display: block;
     }
   }
+}
+
+.wp-post-image {
+  margin: 80px auto 0;
+  display: block;
+  width: 1340px;
+  height: auto;
+  max-width: 100%;
+}
+
+.wp-post-image + .section {
+  margin-top: 40px;
 }

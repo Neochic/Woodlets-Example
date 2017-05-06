@@ -1,0 +1,77 @@
+{% extends 'shared/section.twig' %}
+
+{% block form %}
+    {{
+        woodlets.setTitle('textImageWidget'|trans('woodlets-example'))
+            .setAlias('text-image')
+            .setDescription('textImageWidget'|trans('woodlets-example'))
+    }}
+
+    {{
+    woodlets
+        .add('text', 'headline', { 'label': 'Headline' })
+        .add('rte', 'body', {
+            'label': 'text'|trans('woodlets-example'),
+            'buttons': 'italic, bold, underline, link, unlink, removeformat, formatselect',
+            'tinymce' : {
+                'block_formats': 'Paragraph=p;Header 1=h3;Header 2=h4;Header 3=h5'
+            }
+        })
+        .add('select', 'type', {
+            'label': 'type'|trans('woodlets-example'),
+            'options': {
+                'half-left': '1/2 image left',
+                'half-right': '1/2 image right',
+                'two-thirds-left': '2/3 image left',
+                'two-thirds-right': '2/3 image right',
+                'third-left': '1/3 image left',
+                'third-right': '1/3 image right',
+                'full-width': 'Full size image'
+            }
+        })
+        .add('checkbox', 'twoCols', {
+            'label': 'textImageWidgetTwoCols'|trans('woodlets-example'),
+        })
+        .add('media', 'image', {
+            'label': 'image'|trans('woodlets-example'),
+            'type': 'image'
+        })
+        .add('checkbox', 'h1', {
+            'label': 'mainHeadline'|trans('woodlets-example'),
+        })
+    }}
+{% endblock %}
+
+{% block preview %}
+    {{ headline }}
+    {{ body|raw }}
+{% endblock %}
+
+{% block sectionWrap %}
+    {% set sectionClasses = "text-image "~type %}
+    {% if twoCols %}
+        {% set sectionClasses = sectionClasses ~ " two-cols" %}
+    {% endif %}
+    {% if not headline %}
+        {% set sectionClasses = sectionClasses ~ " without-headline" %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
+
+{% block sectionContent %}
+    {% if headline %}
+        {% if h1 %}<h1>{% else %}<h2>{% endif %}
+        {{ headline }}
+        {% if h1 %}</h1>{% else %}</h2>{% endif %}
+    {% endif %}
+    <div>
+        {% if image %}
+        <div class="img">
+            {{ woodlets.wp_get_attachment_image(image, 'full-content')|raw }}
+        </div>
+        {% endif %}
+        <div class="content-wrap">
+            {{ body|raw }}
+        </div>
+    </div>
+{% endblock %}

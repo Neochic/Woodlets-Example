@@ -1,0 +1,20 @@
+{% extends 'layouts/page.twig' %}
+
+{% block form %}
+    {{
+        woodlets.addCol('main', 'mainColumn'|trans('woodlets-example'), {
+            'allowed': [
+                'centered-text',
+                'text-image'
+            ]
+        })
+    }}
+{% endblock %}
+
+{% block view %}
+    {{ woodlets.getCol('main') }}
+{% endblock %}
+
+{% block content %}
+    {{ block('view') }}
+{% endblock %}

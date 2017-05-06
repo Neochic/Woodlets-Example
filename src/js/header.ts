@@ -33,7 +33,10 @@ $(document).ready(function() {
         $fixed.toggleClass("not-top", $(window).scrollTop() > 0);
     }
 
-    update();
+    window.setTimeout(function() {
+        adminBarHeight = $adminBar.height();
+        update();
+    }, 4);
 
     $(window).on('resize', function() {
         adminBarHeight = $adminBar.height();

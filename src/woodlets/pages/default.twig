@@ -1,19 +1,7 @@
-{% extends 'shared/base-layout.twig' %}
-
-{% block form %}
-    {{
-        woodlets.addCol('main', 'mainColumn'|trans('woodlets-example'), {
-            'allowed': [
-                'centered-text'
-            ]
-        })
-    }}
-{% endblock %}
-
-{% block view %}
-    {{ woodlets.getCol('main') }}
-{% endblock %}
+{% extends '@woodlets/defaultTemplates/pages/default.twig' %}
 
 {% block content %}
-    {{ block('view') }}
+    <div class="section narrow large-text">
+        {{ parent() }}
+    </div>
 {% endblock %}

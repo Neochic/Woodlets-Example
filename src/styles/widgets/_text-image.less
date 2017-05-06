@@ -1,0 +1,128 @@
+.text-image {
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  > div {
+    display: flex;
+  }
+
+  &.half-right, &.half-left {
+    .img {
+      margin-right: 20px;
+      width: ~'calc(50% - 20px)';
+    }
+
+    .content-wrap {
+      margin-left: 20px;
+      width: ~'calc(50% - 20px)';
+    }
+  }
+
+  &.two-thirds-right, &.two-thirds-left {
+    .img {
+      margin-right: 20px;
+      width: ~'calc((100% - 40px) / 3 * 2)';
+    }
+
+    .content-wrap {
+      margin-left: 20px;
+      width: ~'calc((100% - 40px) / 3 * 1)';
+    }
+  }
+
+
+  &.third-right, &.third-left {
+    .img {
+      margin-right: 20px;
+      width: ~'calc((100% - 40px) / 3 * 1)';
+    }
+
+    .content-wrap {
+      margin-left: 20px;
+      width: ~'calc((100% - 40px) / 3 * 2)';
+    }
+  }
+
+  &.two-thirds-right, &.two-thirds-left, &.third-right, &.third-left {
+    @media screen and (max-width: 1020px) {
+      .img {
+        width: ~'calc(50% - 20px)';
+      }
+
+      .content-wrap {
+        width: ~'calc(50% - 20px)';
+      }
+    }
+  }
+
+  &.third-right, &.two-thirds-right, &.half-right {
+    .img {
+      order: 2;
+      margin-right: 0;
+      margin-left: 20px;
+    }
+    .content-wrap {
+      margin-right: 20px;
+      margin-left: 0;
+    }
+  }
+
+  &.half-right, &.half-left, &.two-thirds-right, &.two-thirds-left, &.third-right, &.third-left {
+    @media screen and (max-width: 760px) {
+      > div {
+        flex-direction: column;
+      }
+
+      .img, .content-wrap {
+        margin: 0;
+        width: 100%;
+      }
+
+      .img {
+        order: 1;
+      }
+
+      .img + .content-wrap {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  &.full-width {
+    > div {
+      flex-direction: column;
+    }
+
+    .img + .content-wrap {
+      margin-top: 40px;
+    }
+  }
+
+  &.two-cols.full-width {
+    .content-wrap {
+      column-count: 2;
+      column-gap: 40px;
+
+      @media screen and (max-width: 760px) {
+        column-count: 1;
+      }
+    }
+  }
+
+  &.without-headline {
+    margin-top: -60px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}

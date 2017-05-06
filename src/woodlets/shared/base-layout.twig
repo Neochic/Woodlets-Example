@@ -30,7 +30,7 @@
 
     <div class="header">
         {% block innerHeader %}
-        <div class="fixed" data-mobile-nav="{% spaceless %}{{ block('mobileNav')|escape }}{% endspaceless %}" data-mobile-nav-trigger="{% spaceless %}{{ block('mobileNavTrigger')|escape }}{% endspaceless %}">
+        <div class="fixed{% block fixedHeaderBackgroundClass %} with-background{% endblock %}" data-mobile-nav="{% spaceless %}{{ block('mobileNav')|escape }}{% endspaceless %}" data-mobile-nav-trigger="{% spaceless %}{{ block('mobileNavTrigger')|escape }}{% endspaceless %}">
             {% set logo =woodlets.get_theme_mod('woodlets-example-logo') %}
             <a class="header-logo headline-sc" href="{{ woodlets.get_site_url() }}">
                 {% if logo %}
@@ -59,7 +59,12 @@
     <div class="body{% block bodyClass %}{% endblock %}">
         {% set layoutContent = parent() %}
         {% block innerBody %}
-            {{ layoutContent|raw }}
+            {% block bodyPostThumbnail %}
+                {{ woodlets.the_post_thumbnail('post-thumbnail-1x') }}
+            {% endblock %}
+            {% block innerBodyContent %}
+                {{ layoutContent|raw }}
+            {% endblock %}
         {% endblock %}
     </div>
     <div class="footer section">

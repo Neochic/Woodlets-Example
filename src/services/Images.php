@@ -17,6 +17,14 @@ add_image_size( 'full-width-hd', 1280, 720, true );
 add_image_size( 'full-width', 1920, 1080, true );
 add_image_size( 'full-width-wqhd', 2560, 1440, true );
 add_image_size( 'full-width-4k', 3840, 2160, true );
+add_image_size( 'post-thumbnail-0.5x', 670, 180, true );
+add_image_size( 'post-thumbnail-1x', 1340, 360, true );
+add_image_size( 'post-thumbnail-2x', 2680, 720, true );
+add_image_size( 'post-thumbnail-3x', 4020, 1080, true );
+add_image_size( 'full-content-0.5x', 670, 240, false );
+add_image_size( 'full-content', 1340, 480, false );
+add_image_size( 'full-content-2x', 2680, 960, false );
+add_image_size( 'full-content-3x', 4020, 1440, false );
 
 /*
 * fix sizes attribute for responsive images

@@ -1,6 +1,7 @@
-{% extends 'shared/base-layout.twig' %}
+{% extends '@woodlets/defaultTemplates/list.twig' %}
 
-{% block bodyClass %} blog-body{% endblock %}
+{% block bodyClass %} blog-list-body{% endblock %}
+{% block listArticleThumbnailsCondition %}{% endblock %}
 
 {% block innerBody %}
     <div class="blog-content">

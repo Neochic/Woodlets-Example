@@ -1,18 +1,82 @@
-.blog-body {
+@import (once) "_config";
+
+.blog-list-body {
   display: flex;
-  max-width: 980px;
-  margin: 40px auto 100px;
-  min-height: ~'calc(100vh - 350px)';
+  max-width: 1020px;
+  margin: 100px auto 100px;
+  padding: 0 20px;
   box-sizing: border-box;
+
+  @media screen and (max-width: 760px) {
+    flex-direction: column;
+    margin-top: 40px;
+  }
+
+  h2 {
+    margin-top: 0;
+
+    a {
+      color: @colorHeadline;
+      font-size: 50px;
+      line-height: 1.5em;
+      font-weight: 300;
+
+      @media screen and (max-width: 500px) {
+        font-size: 10vw;
+        line-height: 1.5em;
+      }
+    }
+  }
+
+  article {
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid @greyBackground;
+
+    &:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  footer {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.5em;
+    font-style: italic;
+  }
+
+  .widget {
+    h2 {
+      font-size: 20px;
+      line-height: 1.5em;
+      font-family: "Cormorant SC", sans-serif;
+    }
+    margin: 40px 0;
+  }
 }
 
 .blog-content {
   flex: 1;
+
+  @media screen and (max-width: 760px) {
+    width: 100%;
+  }
 }
 
 .blog-sidebar {
   margin-left: 100px;
   width: 300px;
+
+  @media screen and (max-width: 960px) {
+    margin-left: 40px;
+  }
+
+  @media screen and (max-width: 760px) {
+    margin-left: 0;
+    width: 100%;
+    max-width: 300px;
+  }
 
   ul {
     .clean-list();
@@ -21,4 +85,77 @@
       display: block;
     }
   }
+}
+
+#comments {
+  border-top: 2px solid @greyBackground;
+  margin-top: 40px;
+
+  ol {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  > ol > li > ol {
+    margin-top: 20px;
+    padding: 30px 0 30px 70px;
+    background-color: @greyBackground;
+  }
+
+  #submit {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: @accentColor;
+    color: @colorBackgroundLight;
+    border: 0;
+    padding: 8px 25px;
+  }
+}
+
+.comment-body {
+  padding-left: 70px;
+  position: relative;
+}
+
+.comment-author {
+  img {
+    border-radius: 100%;
+    position: absolute;
+    left: 0;
+  }
+}
+
+.comment-form {
+  p {
+    margin: 0;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  input[type=text], input[type=email], input[type=url], textarea {
+    width: 450px;
+    max-width: 100%;
+  }
+
+  textarea {
+    height: 100px;
+  }
+}
+
+#comments .comments-title {
+  margin-top: 100px;
+  font-size: 30px;
+  line-height: 1.5em;
+}
+
+.comment-reply-link {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: @accentColor;
+  color: @colorBackgroundLight;
+  padding: 8px 25px;
 }

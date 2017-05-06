@@ -1,4 +1,4 @@
-{% extends 'pages/default.twig' %}
+{% extends 'pages/advanced.twig' %}
 
 {% block form %}
     {{ parent() }}
@@ -12,7 +12,8 @@
     }}
 {% endblock %}
 
-{% block titleAndBreadCrumb %}{% endblock %}
+{% block fixedHeaderBackgroundClass %}{% endblock %}
+{% block bodyPostThumbnail %}{% endblock %}
 
 {% block innerHeader %}
     {{ parent() }}
