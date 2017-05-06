@@ -21,18 +21,38 @@ add_image_size( 'post-thumbnail-0.5x', 670, 180, true );
 add_image_size( 'post-thumbnail-1x', 1340, 360, true );
 add_image_size( 'post-thumbnail-2x', 2680, 720, true );
 add_image_size( 'post-thumbnail-3x', 4020, 1080, true );
-add_image_size( 'full-content-0.5x', 670, 240, false );
-add_image_size( 'full-content', 1340, 480, false );
-add_image_size( 'full-content-2x', 2680, 960, false );
-add_image_size( 'full-content-3x', 4020, 1440, false );
+add_image_size( 'full-content-0.5x', 670);
+add_image_size( 'full-content', 1340);
+add_image_size( 'full-content-2x', 2680);
+add_image_size( 'full-content-3x', 4020);
+add_image_size( 'half-content-0.5x', 325);
+add_image_size( 'half-content', 650);
+add_image_size( 'half-content-2x', 1300);
+add_image_size( 'half-content-3x', 1950);
+add_image_size( 'two-thirds-content-0.5x', 434);
+add_image_size( 'two-thirds-content', 866);
+add_image_size( 'two-thirds-content-2x', 1732);
+add_image_size( 'two-thirds-content-3x', 2598);
+add_image_size( 'third-content', 434);
+add_image_size( 'third-content-2x', 868);
+add_image_size( 'third-content-3x', 1302);
 
 /*
 * fix sizes attribute for responsive images
 */
 add_filter( 'wp_get_attachment_image_attributes', function ( $atts, $attachment, $size ) {
 	switch ( $size ) {
-		case "one-third-content":
-			$atts['sizes'] = "(max-width: 1020px) 560px, (max-width: 600px) 100vw, 420px";
+		case "third-content":
+			$atts['sizes'] = "(max-width: 1020px) 50vw, (max-width: 760px) 100vw, 434px";
+			break;
+		case "two-thirds-content":
+			$atts['sizes'] = "(max-width: 1020px) 50vw, (max-width: 760px) 100vw, 866px";
+			break;
+		case "half-content":
+			$atts['sizes'] = "(max-width: 1020px) 50vw, (max-width: 760px) 100vw, 650px";
+			break;
+		case "full-content":
+			$atts['sizes'] = "(max-width: 1020px) 100vw, 1340px";
 			break;
 		case "full-width":
 			$atts['sizes'] = "100vw";
@@ -46,7 +66,7 @@ add_filter( 'wp_get_attachment_image_attributes', function ( $atts, $attachment,
  * increase max srcset size to 4k
  */
 add_filter( 'max_srcset_image_width', function ( ) {
-	return 3840;
+	return 4020;
 }, 10, 2 );
 
 /*

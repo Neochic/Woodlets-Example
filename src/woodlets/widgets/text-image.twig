@@ -59,6 +59,15 @@
 {% endblock %}
 
 {% block sectionContent %}
+    {% set imageSize = "full-content" %}
+    {% if type == "half-left" or type == "half-right" %}
+        {% set imageSize = "half-content" %}
+    {% elseif type == "third-left" or type == "third-right" %}
+        {% set imageSize = "third-content" %}
+    {% elseif type == "two-thirds-left" or type == "two-thirds-right" %}
+        {% set imageSize = "two-thirds-content" %}
+    {% endif %}
+
     {% if headline %}
         {% if h1 %}<h1>{% else %}<h2>{% endif %}
         {{ headline }}
@@ -67,7 +76,7 @@
     <div>
         {% if image %}
         <div class="img">
-            {{ woodlets.wp_get_attachment_image(image, 'full-content')|raw }}
+            {{ woodlets.wp_get_attachment_image(image, imageSize)|raw }}
         </div>
         {% endif %}
         <div class="content-wrap">
