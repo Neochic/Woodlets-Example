@@ -6,7 +6,6 @@ apache:
   volumes:
     - ./public:/var/www/html/
     - ./src/:/var/www/html/wp-content/themes/${WOODLETS_NAME}
-    - /home/christoph/workspace/Woodlets:/var/www/html/wp-content/plugins/woodlets
   links:
     - mysql
   environment:
