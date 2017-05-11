@@ -6,7 +6,7 @@ add_action( 'tgmpa_register', function() {
 		array(
 			'name'               => 'Woodlets',
 			'slug'               => 'woodlets',
-			'source'             => 'https://github.com/Neochic/Woodlets/releases/download/v0.5.8/woodlets-v0.5.8-bundled.zip',
+			'source'             => 'https://github.com/Neochic/Woodlets/releases/download/v0.6.0/woodlets-v0.6.0-bundled.zip',
 			'required'           => true,
 			'force_activation'   => true,
 			'force_deactivation' => true
