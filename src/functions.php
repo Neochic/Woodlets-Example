@@ -12,8 +12,11 @@ add_action('wp_print_scripts', function() {
     wp_deregister_script('wp-embed');
 }, 100);
 
-add_filter('neochic_woodlets_twig', function ($twig) {
-    return $twig;
+/*
+ * load textdomain
+ */
+add_action('after_setup_theme', function () {
+	load_theme_textdomain('woodlets-example', get_template_directory() . '/languages');
 });
 
 add_action( 'widgets_init', function () {

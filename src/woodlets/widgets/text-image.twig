@@ -4,12 +4,12 @@
     {{
         woodlets.setTitle('textImageWidget'|trans('woodlets-example'))
             .setAlias('text-image')
-            .setDescription('textImageWidget'|trans('woodlets-example'))
+            .setDescription('textImageWidgetDescription'|trans('woodlets-example'))
     }}
 
     {{
     woodlets
-        .add('text', 'headline', { 'label': 'Headline' })
+        .add('text', 'headline', { 'label': 'headline'|trans('woodlets-example') })
         .add('rte', 'body', {
             'label': 'text'|trans('woodlets-example'),
             'buttons': 'italic, bold, underline, link, unlink, removeformat, formatselect',

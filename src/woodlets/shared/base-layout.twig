@@ -81,7 +81,7 @@
                 }}
             </div>
         {% endif %}
-        {% set defaultCopyrightText ='Powered by <a href="https://wordpress.org/" target="_blank">WordPress</a>. Theme: <a href="https://github.com/Neochic/Woodlets-Example" target="_blank">Woodlets-Example</a> by <a href="https://www.neochic.de/" target="_blank">Neochic GmbH</a>' %}
+        {% set defaultCopyrightText ='Powered by <a href="https://wordpress.org/" target="_blank">WordPress</a>. Theme: <a href="https://github.com/Neochic/Woodlets-Example" target="_blank">Woodlets-Example</a> by <a href="http://www.neochic.de/" target="_blank">Neochic GmbH</a>' %}
         © {{ woodlets.date('Y') }} &mdash; {{ woodlets.get_theme_mod('woodlets-example-copyright-text')|default(defaultCopyrightText)|raw }}
     </div>
 {% endblock %}

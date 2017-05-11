@@ -4,7 +4,7 @@
     {{ parent() }}
     {{
         woodlets
-            .section("Header"|trans('woodlets-example'))
+            .section("header"|trans('woodlets-example'))
             .add('media', 'homeTeaserImage', {
                 'label': 'image'|trans('woodlets-example'),
                 'type': 'image'
@@ -30,7 +30,7 @@
             {% if description or woodlets.is_customize_preview() %}
                 <strong>{{ description }}</strong>
             {% endif %}
-            <span class="headline-font">Weiterlesen</span>
+            <span class="headline-font">{{ 'readMore'|trans('woodlets-example') }}</span>
         </div>
     </div>
 {% endblock %}
